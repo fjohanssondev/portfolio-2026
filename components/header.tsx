@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <header className="py-5">
+    <header className="flex items-center h-18">
       <Container className="flex items-center justify-between">
         <Link className="font-semibold" href="/">
           fjohansson.dev
