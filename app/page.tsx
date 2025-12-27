@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { Container } from "@/components/container";
-import { HeartIcon } from "@/components/heart-icon";
+import { HeartIcon } from "@/components/icons/heart-icon";
 import { FadeIn } from "@/components/animations/fade-in";
 import { TechBox } from "@/components/tech-box";
 import {
@@ -11,6 +11,8 @@ import {
   SiPrisma,
   SiTypescript,
 } from "react-icons/si";
+import { CurrentlyPlaying } from "@/components/currently-playing";
+import { Badge } from "@/components/ui/badge";
 
 const experiences = [
   {
@@ -76,12 +78,15 @@ export default function Page() {
       <Container>
         <section className="mt-12 md:mt-24">
           <div className="flex flex-col space-y-4 items-center">
-            <FadeIn duration={0.6} direction="left">
+            <FadeIn distance={50} duration={0.6}>
+              <Badge>Portfolio is currently WIP</Badge>
+            </FadeIn>
+            <FadeIn distance={50} duration={0.6} direction="left">
               <h1 className="flex items-center justify-center text-center text-4xl md:text-6xl gap-2">
                 I <HeartIcon /> building software.
               </h1>
             </FadeIn>
-            <FadeIn duration={0.8}>
+            <FadeIn distance={50} duration={0.8}>
               <p className="text-sm md:text-base leading-relaxed text-center text-muted-foreground max-w-sm md:max-w-lg">
                 Hi, my name is Fredrik. A Software Engineer from Sweden. You can
                 find my projects on my{" "}
@@ -102,9 +107,15 @@ export default function Page() {
           </div>
         </section>
         <section className="mt-24">
-          <FadeIn delay={0.6} duration={1}>
+          <FadeIn delay={0.8} duration={1} direction="left">
+            <CurrentlyPlaying />
+          </FadeIn>
+        </section>
+        <section className="mt-4">
+          <FadeIn distance={50} delay={0.6} duration={1}>
             <div className="relative w-full rounded-lg overflow-hidden">
               <Image
+                loading="eager"
                 width={1400}
                 height={784}
                 src="/use-my-bio.png"
