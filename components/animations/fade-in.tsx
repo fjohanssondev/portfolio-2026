@@ -43,20 +43,27 @@ export function FadeIn({
     }
   };
 
+  const initialState = {
+    opacity: 0,
+    ...getInitialPosition(),
+    filter: `blur(${blur}px)`,
+  };
+
   return (
     <motion.div
       ref={ref}
-      initial={{
-        opacity: 0,
-        ...getInitialPosition(),
-        filter: `blur(${blur}px)`,
-      }}
+      initial={initialState}
       animate={
         isInView
-          ? { opacity: 1, x: 0, y: 0, filter: "blur(0px)" }
-          : { opacity: 0, ...getInitialPosition(), filter: `blur(${blur}px)` }
+          ? {
+              opacity: 1,
+              x: 0,
+              y: 0,
+              filter: "blur(0px)",
+              transition: { duration, delay },
+            }
+          : initialState
       }
-      transition={{ duration, delay }}
     >
       {children}
     </motion.div>

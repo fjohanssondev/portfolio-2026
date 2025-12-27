@@ -102,11 +102,11 @@ export default function Page() {
           </div>
         </section>
         <section className="mt-24">
-          <FadeIn duration={1.2}>
-            <div className="relative w-full h-140">
+          <FadeIn delay={0.6} duration={1}>
+            <div className="relative w-full rounded-lg overflow-hidden">
               <Image
-                className="object-contain"
-                fill
+                width={1400}
+                height={784}
                 src="/use-my-bio.png"
                 alt="Code editor"
               />
