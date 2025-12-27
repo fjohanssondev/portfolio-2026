@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import { Header } from "@/components/header";
-import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import clsx from "clsx";
+import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
