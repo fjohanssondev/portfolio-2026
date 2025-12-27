@@ -22,12 +22,17 @@ export function Header() {
               </Link>
             </li>
             <li>
-              <Link className="hover:underline" href="/blog">
+              <Link
+                className="hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/fjohanssondev"
+              >
                 GitHub
               </Link>
             </li>
             <li>
-              <Link className="hover:underline" href="/blog">
+              <Link className="hover:underline" href="/contact">
                 Contact
               </Link>
             </li>

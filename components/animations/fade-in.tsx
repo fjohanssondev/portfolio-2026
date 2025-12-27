@@ -6,6 +6,7 @@ import { useRef } from "react";
 type Direction = "up" | "down" | "left" | "right";
 
 interface FadeInProps {
+  className?: string;
   children: React.ReactNode;
   distance?: number;
   duration?: number;
@@ -16,6 +17,7 @@ interface FadeInProps {
 }
 
 export function FadeIn({
+  className,
   children,
   distance = 20,
   duration = 0.5,
@@ -51,6 +53,7 @@ export function FadeIn({
 
   return (
     <motion.div
+      className={className}
       ref={ref}
       initial={initialState}
       animate={

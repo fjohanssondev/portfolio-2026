@@ -1,3 +1,6 @@
+import { z } from "zod";
+import { formSchema } from "@/schema";
+
 type ArtistType = "artist";
 
 export interface Artist {
@@ -19,3 +22,9 @@ export interface MusicInfo {
   title: string;
   url: string;
 }
+
+export type FormState = {
+  values: z.infer<typeof formSchema>;
+  errors: null | Partial<Record<keyof z.infer<typeof formSchema>, string[]>>;
+  success: boolean;
+};

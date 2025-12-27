@@ -13,6 +13,7 @@ import {
 } from "react-icons/si";
 import { CurrentlyPlaying } from "@/components/currently-playing";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const experiences = [
   {
@@ -72,7 +73,7 @@ const certificates = [
   },
 ];
 
-export default function Page() {
+export default function LandingPage() {
   return (
     <main>
       <Container>
@@ -87,23 +88,28 @@ export default function Page() {
               </h1>
             </FadeIn>
             <FadeIn distance={50} duration={0.8}>
-              <p className="text-sm md:text-base leading-relaxed text-center text-muted-foreground max-w-sm md:max-w-lg">
+              <p className="text-sm md:text-base leading-relaxed text-center text-muted-foreground max-w-sm md:max-w-xl">
                 Hi, my name is Fredrik. A Software Engineer from Sweden. You can
                 find my projects on my{" "}
                 <Link className="underline text-foreground" href="">
                   GitHub
                 </Link>
-                . You can also contact me by email.
+                . You can also contact me on any of my socials.
               </p>
             </FadeIn>
-            <FadeIn duration={1}>
-              <a
-                className="text-sm md:text-base underline"
-                href="mailto:hey@fjohansson.dev"
+            <div className="mt-6">
+              <FadeIn
+                className="flex space-x-4"
+                distance={60}
+                delay={0.4}
+                duration={1}
               >
-                hey@fjohansson.dev
-              </a>
-            </FadeIn>
+                <Button size="lg">Download CV</Button>
+                <Button size="lg" variant="secondary" asChild>
+                  <Link href="/socials">See my socials</Link>
+                </Button>
+              </FadeIn>
+            </div>
           </div>
         </section>
         <section className="mt-24">
