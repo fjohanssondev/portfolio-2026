@@ -15,11 +15,16 @@ export function CurrentlyPlaying() {
       const res = await fetch("/api/spotify/now-playing");
       const data: MusicInfo = await res.json();
 
-      const timeRemaining = data.duration - data.progress;
-
       setInfo(data);
 
-      timeoutID = setTimeout(() => getCurrentSong(), timeRemaining);
+      if (data.isPlaying && data.duration && data.progress) {
+        const timeRemaining = data.duration - data.progress;
+
+        const nextFetch = Math.max(timeRemaining + 1000, 5000);
+        timeoutID = setTimeout(getCurrentSong, nextFetch);
+      } else {
+        timeoutID = setTimeout(getCurrentSong, 30000);
+      }
     };
 
     getCurrentSong();
