@@ -1,7 +1,13 @@
 import { ContactForm } from "@/components/contact-form";
 import { Container } from "@/components/container";
 import { CurrentTime } from "@/components/current-time";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in contact with me.",
+};
 
 export default function ContactPage() {
   return (
@@ -19,10 +25,6 @@ export default function ContactPage() {
             <div className="mt-6">
               <h2 className="font-medium">Email</h2>
               <p className="text-muted-foreground mt-1">hello@fjohansson.dev</p>
-            </div>
-            <div className="mt-6">
-              <h2 className="font-medium">Phone</h2>
-              <p className="text-muted-foreground mt-1">+46 70 238 75 46</p>
             </div>
             <div className="mt-6">
               <h2 className="font-medium">Socials</h2>
