@@ -12,7 +12,7 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yoursite.com"),
+  metadataBase: new URL("https://fjohansson.dev"),
   title: {
     default: "Fredrik | Software Engineer",
     template: "%s | Fredrik",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Fredrik Portfolio",
-    images: ["/use-my-bio.png"],
+    images: ["/og.jpg"],
   },
   twitter: {
     card: "summary_large_image",

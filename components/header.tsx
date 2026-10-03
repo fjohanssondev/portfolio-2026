@@ -12,33 +12,20 @@ export function Header() {
         <nav>
           <ul className="flex text-sm md:text-base space-x-6 md:space-x-8">
             <li>
-              <Link className="hover:underline" href="/cases">
+              <Link className="hover:text-brand transition-colors" href="/cases">
                 Cases
               </Link>
             </li>
             <li>
-              <Link className="hover:underline" href="/blog">
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://github.com/fjohanssondev"
-              >
-                GitHub
-              </Link>
-            </li>
-            <li>
-              <Link className="hover:underline" href="/contact">
+              <Link className="hover:text-brand transition-colors" href="/contact">
                 Contact
               </Link>
             </li>
           </ul>
         </nav>
-        <Button>Download CV</Button>
+        <Button asChild>
+          <Link href="/cv">Read my CV</Link>
+        </Button>
       </Container>
     </header>
   );
