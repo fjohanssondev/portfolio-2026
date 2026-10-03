@@ -1,0 +1,53 @@
+import Image from "next/image";
+
+export const metadata = {
+  title: "Cherry Woken",
+  description:
+    "A website for a local Thai & Chinese restaurant in Sundsvall that didn't have one.",
+  date: "2026-01-01",
+  tags: ["Next.js", "TypeScript"],
+  url: "https://www.cherrywoken.se",
+  image: "/cases/cherry-woken/desktop.png",
+};
+
+<Image
+  className="rounded-lg border border-border mt-4"
+  src="/cases/cherry-woken/desktop.png"
+  alt="The Cherry Woken start page with opening hours, contact details and menu filters"
+  width={2880}
+  height={1800}
+  priority
+/>
+
+## Background
+
+Cherry Woken is a Thai and Chinese restaurant in Sundsvall, and one I eat at regularly. I noticed it didn't have an official website, so anyone searching for the menu, the opening hours or the phone number had to rely on third-party listings that were often out of date.
+
+Since it's a local place I like, I thought it would be fun to build a site for them.
+
+## The approach
+
+The site is intentionally kept simple and mostly static. The restaurant needs a fast page that shows the essentials:
+
+- **Opening hours**, including weekday lunch
+- **Phone number and address**, so placing a takeaway order is one tap away
+- **The full menu**, with prices, dish numbers and allergy notes
+
+To make the menu of 60+ dishes easier to browse, I added search by dish name, number or sauce, plus filters for chicken, beef, seafood, vegetarian and spicy dishes. Visitors can also save their favourite dishes to a list and share it with friends or family, which makes it easy to remember what you ordered last time.
+
+<Image
+  className="rounded-lg border border-border mt-8"
+  src="/cases/cherry-woken/menu.png"
+  alt="The Cherry Woken menu with prices, allergy notes and spice level votes"
+  width={2880}
+  height={1800}
+/>
+
+## The dynamic parts
+
+Only two things on the site are dynamic:
+
+- **Spice level voting.** Visitors can vote on how spicy each dish is, on a scale from one to three chillies. Over time the menu builds up a crowd-sourced spice rating, which is much more useful than a single "spicy" label.
+- **Feedback.** Visitors can report an error in the menu or anything else that could be better on the site.
+
+Everything else is static, which keeps the site fast and cheap to host.
