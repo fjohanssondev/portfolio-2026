@@ -47,11 +47,11 @@ export function CurrentlyPlaying() {
 
   return (
     <div className="flex items-center space-x-2">
-      <AudioLinesIcon size={18} />
+      <AudioLinesIcon size={18} className="text-brand" />
       <p className="text-sm">
         Currently Listening to:{" "}
         <Link
-          className="underline"
+          className="underline decoration-brand underline-offset-4 hover:text-brand transition-colors"
           target="_blank"
           rel="noopener noreferrer"
           href={info.url}

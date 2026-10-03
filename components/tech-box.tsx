@@ -6,8 +6,8 @@ interface TechBoxProps {
 
 export function TechBox({ icon, name, description }: TechBoxProps) {
   return (
-    <div className="flex items-center space-x-4">
-      <div className="flex justify-center items-center h-12  w-13 border border-border rounded">
+    <div className="group flex items-center space-x-4">
+      <div className="flex justify-center items-center h-12 w-13 border border-border rounded transition-colors group-hover:border-brand/60 group-hover:text-brand">
         {icon}
       </div>
       <div className="flex flex-col space-y-1">
