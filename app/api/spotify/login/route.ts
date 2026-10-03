@@ -7,6 +7,11 @@ const params = new URLSearchParams({
   scope: scopes,
 });
 
+// Only used locally to obtain a refresh token, see README.
 export async function GET() {
+  if (process.env.NODE_ENV === "production") {
+    return new Response("Not found", { status: 404 });
+  }
+
   return Response.redirect(`https://accounts.spotify.com/authorize?${params}`);
 }

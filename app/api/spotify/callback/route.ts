@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 
+// Only used locally to obtain a refresh token, see README.
 export async function GET(request: Request) {
+  if (process.env.NODE_ENV === "production") {
+    return new Response("Not found", { status: 404 });
+  }
+
   const { searchParams } = new URL(request.url);
   const code = searchParams.get("code");
 
@@ -28,11 +33,15 @@ export async function GET(request: Request) {
   const data = await response.json();
 
   if (data.error) {
-    return NextResponse.json({ error: data.error }, { status: 400 });
+    return NextResponse.json(
+      { error: data.error_description ?? data.error },
+      { status: 400 },
+    );
   }
 
-  return NextResponse.json({
-    refresh_token: data.refresh_token,
-    access_token: data.access_token,
-  });
+  console.log(`\nSPOTIFY_REFRESH_TOKEN=${data.refresh_token}\n`);
+
+  return new Response(
+    "Done! The refresh token has been printed in the terminal running the dev server.",
+  );
 }

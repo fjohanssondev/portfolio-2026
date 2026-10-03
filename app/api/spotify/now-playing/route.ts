@@ -13,12 +13,21 @@ export async function GET() {
     }
   );
 
-  if (!res.body) {
+  if (!res.ok){
+    console.error("Failed to fetch currently playing track from Spotify. Check refresh token");
+    return Response.json({ isPlaying: false });
+  }
+
+  if (res.status === 204 || !res.body) {
     return Response.json({ isPlaying: false });
   }
 
   const data = await res.json();
-  console.log(data);
+
+  if (!data.item) {
+    return Response.json({ isPlaying: false });
+  }
+
   return Response.json({
     isPlaying: data.is_playing,
     title: data.item.name,
