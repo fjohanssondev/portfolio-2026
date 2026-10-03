@@ -29,12 +29,25 @@ export async function sendEmailAction(
     };
   }
 
-  await resend.emails.send({
-    from: values.email,
+  const { error } = await resend.emails.send({
+    from: "Portfolio <hello@fjohansson.dev>",
+    replyTo: values.email,
     subject: "Kontaktformulär Portfolio",
     to: ["hello@fjohansson.dev"],
-    text: `Namn: ${values.name}</br>${values.message}`,
+    text: `Namn: ${values.name}\nE-post: ${values.email}\n\n${values.message}`,
   });
+
+  if (error) {
+    console.error("Failed to send email", error);
+
+    return {
+      values,
+      success: false,
+      errors: {
+        message: ["Something went wrong. Please try again or email me directly."],
+      },
+    };
+  }
 
   return {
     values: {

@@ -9,20 +9,15 @@ const getStockholmTime = () =>
   });
 
 export function CurrentTime() {
-  const [time, setTime] = useState(getStockholmTime());
+  const [time, setTime] = useState<string | null>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(
-        new Date().toLocaleString("sv-SE", {
-          timeZone: "Europe/Stockholm",
-          timeStyle: "medium",
-        })
-      );
-    }, 1000);
+    const tick = () => setTime(getStockholmTime());
+    tick();
+    const interval = setInterval(tick, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
-  return <span className="text-muted-foreground">{time}</span>;
+  return <span>{time}</span>;
 }
