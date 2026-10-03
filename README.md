@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# fjohansson.dev
 
-## Getting Started
+My personal portfolio, built with Next.js, TypeScript, Tailwind CSS and MDX.
 
-First, run the development server:
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+bun install
+cp .env.example .env.local
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Path               | What it is                                              |
+| ------------------ | ------------------------------------------------------- |
+| `app/`             | Pages and API routes (App Router)                       |
+| `content/cases/`   | Case studies written in MDX                             |
+| `lib/cases.ts`     | Loads and sorts the case studies                        |
+| `lib/cv.ts`        | Experience, education and certificates shown on `/cv`   |
+| `mdx-components.tsx` | Styling for elements rendered from MDX               |
+| `actions/`         | Server actions, e.g. the contact form                   |
+| `public/`          | Static assets such as images                            |
 
-## Learn More
+## Adding a case
 
-To learn more about Next.js, take a look at the following resources:
+Create a new file in `content/cases/`. The file name becomes the URL, so
+`my-project.mdx` is served at `/cases/my-project`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```mdx
+export const metadata = {
+  title: "My Project",
+  description: "One sentence about the project.",
+  date: "2026-01-01",
+  tags: ["Next.js", "TypeScript"],
+  image: "/cases/my-project/desktop.png",
+  url: "https://example.com", // optional
+};
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Background
 
-## Deploy on Vercel
+Write the case here.
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Put screenshots in `public/cases/<slug>/`. Cases are sorted by `date`, newest first.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Environment variables
+
+See `.env.example`.
+
+| Variable                | Used for                                         |
+| ----------------------- | ------------------------------------------------ |
+| `RESEND_API_KEY`        | Sending emails from the contact form             |
+| `SPOTIFY_CLIENT_ID`     | Spotify app credentials                          |
+| `SPOTIFY_CLIENT_SECRET` | Spotify app credentials                          |
+| `SPOTIFY_REFRESH_TOKEN` | Fetching what I'm currently listening to         |
+| `SPOTIFY_REDIRECT_URI`  | Only needed locally to get a new refresh token   |
+
+The contact form sends from `hello@fjohansson.dev`, so that domain has to be
+verified in Resend.
+
+### Getting a Spotify refresh token
+
+The login and callback routes only work in development and return 404 in production.
+
+1. Create an app in the [Spotify developer dashboard](https://developer.spotify.com/dashboard)
+   and add `http://127.0.0.1:3000/api/spotify/callback` as a redirect URI.
+2. Add the client id, client secret and redirect URI to `.env.local`.
+3. Run `bun dev` and open [http://127.0.0.1:3000/api/spotify/login](http://127.0.0.1:3000/api/spotify/login).
+4. After approving, the refresh token is printed in the terminal running the dev server.
+5. Add it as `SPOTIFY_REFRESH_TOKEN` in `.env.local` and in your hosting provider.
+
+## Scripts
+
+| Command     | Description                  |
+| ----------- | ---------------------------- |
+| `bun dev`   | Start the development server |
+| `bun run build` | Build for production     |
+| `bun start` | Start the production build   |
+| `bun lint`  | Run ESLint                   |

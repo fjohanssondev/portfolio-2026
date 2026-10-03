@@ -14,45 +14,40 @@ export function Footer() {
             </p>
           </div>
           <div className="flex space-x-4">
-            <Link href="/">
+            <Link href="https://github.com/fjohanssondev" target="_blank">
               <SiGithub size={20} />
             </Link>
-            <Link href="/">
+            <Link href="https://www.linkedin.com/in/fjohanssonn" target="_blank">
               <SiLinkedin size={20} />
             </Link>
           </div>
           <a
             className="text-sm underline mt-6"
-            href="mailto:hey@fjohansson.dev"
+            href="mailto:hello@fjohansson.dev"
           >
-            hey@fjohansson.dev
+            hello@fjohansson.dev
           </a>
         </div>
-        <ul className="flex-1">
-          <ul className="flex flex-col text-sm space-y-3">
-            <span className="text-base font-medium">Menu</span>
+        <nav className="flex-1">
+          <span className="text-base font-medium">Menu</span>
+          <ul className="flex flex-col text-sm space-y-3 mt-3">
             <li>
-              <Link className="hover:underline" href="/cases">
+              <Link className="hover:text-brand transition-colors" href="/cases">
                 Cases
               </Link>
             </li>
             <li>
-              <Link className="hover:underline" href="/blog">
-                Blog
+              <Link className="hover:text-brand transition-colors" href="/cv">
+                CV
               </Link>
             </li>
             <li>
-              <Link className="hover:underline" href="/blog">
-                GitHub
-              </Link>
-            </li>
-            <li>
-              <Link className="hover:underline" href="/blog">
+              <Link className="hover:text-brand transition-colors" href="/contact">
                 Contact
               </Link>
             </li>
           </ul>
-        </ul>
+        </nav>
       </Container>
     </footer>
   );
